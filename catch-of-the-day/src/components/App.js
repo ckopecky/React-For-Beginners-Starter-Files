@@ -49,7 +49,17 @@ class App extends React.Component {
         //update that state
         fishes[fish] = updatedFish;
         //set that to state
-        this.setState({fishes});
+        this.setState({ fishes });
+    }
+
+    deleteFish = (fish) => {
+        //1. take a copy of state
+        const fishes = {...this.state.fishes}
+        //2. set fish we don't want to null
+        fishes[fish] = null;
+        //3. update state
+        this.setState({ fishes });
+
     }
 
     loadSamples = () => {   
@@ -63,10 +73,17 @@ class App extends React.Component {
         order[key] = order[key] + 1 || 1;
         //call setState to update our state object
         this.setState({order});
-
-
-
     }
+
+    removeFromOrder = (key) => {
+        const order = {...this.state.order};
+        //1. take a copy of state
+        delete order[key];
+        //2. remove that item from order
+        this.setState({ order })
+        //3. set State
+    }
+
     render(){
         return (
             <div className="catch-of-the-day">
@@ -84,8 +101,18 @@ class App extends React.Component {
                     </ul>
                 </div>
                 {/* <Order {...this.state} /> would also work as long as state doesn't have properties added. Only pass data down that you explicitly need.  */}
-                <Order fishes={this.state.fishes} order={this.state.order}/>
-                <Inventory addFish = {this.addFish} updateFish={this.updateFish} loadSamples= {this.loadSamples} fishes={this.state.fishes}/>
+                <Order 
+                    fishes={this.state.fishes} 
+                    order={this.state.order} 
+                    removeFromOrder={this.removeFromOrder}
+                />
+                <Inventory 
+                    addFish = {this.addFish} 
+                    updateFish={this.updateFish} 
+                    deleteFish={this.deleteFish} 
+                    loadSamples= {this.loadSamples} 
+                    fishes={this.state.fishes}
+                />
             </div>
         )
     }
