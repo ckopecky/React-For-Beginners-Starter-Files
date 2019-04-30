@@ -1,8 +1,8 @@
 import Rebase from 're-base';
 import firebase from 'firebase';
-
+import { firebaseKey } from "./config";
 const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyA1hmevCekPjp8RRjOVkv_rRbeRylO-ep8",
+    apiKey: {firebaseKey},
     authDomain: "catch-of-the-day-1952.firebaseapp.com",
     databaseURL: "https://catch-of-the-day-1952.firebaseio.com"
 })
