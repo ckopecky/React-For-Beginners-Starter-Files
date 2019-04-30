@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const Header = (props) => {
     return (
@@ -20,5 +21,10 @@ const Header = (props) => {
             </header>
     );
 };
+
+//proptypes are developer helpers == they don't go to production. 
+Header.propTypes = {
+    slug: PropTypes.string.isRequired
+}
 
 export default Header;
