@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import fishes from "../sample-fishes";
-import { formatPrice } from "../helpers";
 
 class EditFishForm extends Component {
 
@@ -29,7 +27,7 @@ class EditFishForm extends Component {
                     type="text"
                     placeholder="Price"
                     onChange={this.handleChange}
-                    value={formatPrice(price)}
+                    value={price}
                 />
                 <select 
                     name="status" 
@@ -50,7 +48,7 @@ class EditFishForm extends Component {
                     onChange={this.handleChange}
                     value={image}
                 />
-                <button type="submit"> + Update Fish</button>
+                <button onClick={ () => this.props.deleteFish(this.props.index)}type="submit"> Delete Fish</button>
             </div>
         );
     }
